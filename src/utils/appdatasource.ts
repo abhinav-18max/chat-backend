@@ -1,15 +1,16 @@
 import { DataSource } from 'typeorm';
-import { User } from '../user/entities/user.entity';
-import { Session } from '../user/entities/session.entity';
+import entities from "./typeorm";
 
-export const AppdataSource: DataSource = new DataSource({
+export const Appdatasource = new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
   password: '226939',
   username: 'postgres',
-  entities: [User],
   database: 'chat',
   synchronize: true,
   logging: true,
+  entities: entities
+
+
 });

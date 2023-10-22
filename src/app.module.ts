@@ -1,15 +1,24 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { PassportModule } from '@nestjs/passport';
 import { DataSource } from 'typeorm';
-import { PassportModule } from "@nestjs/passport";
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Appdatasource } from './utils/appdatasource';
+import  entities  from './utils/typeorm';
+
+
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),PassportModule.register({session:true}), AuthModule, UserModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot(Appdatasource.options),
+    PassportModule.register({ session: true }),
+    AuthModule,
+    UserModule,
+  ],
+
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private Appdatasource: DataSource) {}
+
+}
