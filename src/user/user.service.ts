@@ -23,10 +23,6 @@ export class UserService {
       if (createUserDto.password.length < 6) {
         return 'Password must be at least 6 characters';
       }
-      if (await this.findOneByEmail(createUserDto.email)) {
-        await console.log(this.findOneByEmail(createUserDto.email));
-        return 'Email already exists';
-      }
 
       const user: User = new User();
       user.name = createUserDto.name;

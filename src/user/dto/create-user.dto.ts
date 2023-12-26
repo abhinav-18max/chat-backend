@@ -1,8 +1,11 @@
-import { IsEmail, IsNotEmpty, IsString, Matches } from "class-validator";
-import { Unique } from 'typeorm';
+import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { Generated, Unique } from 'typeorm';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 export class CreateUserDto {
+  @Generated()
+  id: string;
+
   @IsString()
   @IsNotEmpty({
     message: 'Name is required',

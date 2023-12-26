@@ -10,6 +10,7 @@ export class AuthService {
     console.log(email);
     if (user && user.password === passowrd) {
       const { password, ...rest } = user;
+      console.log(rest);
       return rest;
     }
     return null;

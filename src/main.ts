@@ -6,20 +6,22 @@ import * as session from 'express-session';
 import { SessionEntity } from './utils/typeorm/entities/session';
 import { TypeormStore } from 'connect-typeorm';
 import { Appdatasource } from './utils/appdatasource';
-import { getConnection, getRepository } from "typeorm";
-
+import { getConnection, getRepository } from 'typeorm';
 
 async function bootstrap() {
-  if (Appdatasource.isInitialized===false)
-    await Appdatasource.initialize()
+  if (Appdatasource.isInitialized === false) await Appdatasource.initialize();
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  });
   const sessionrepository = Appdatasource.getRepository(SessionEntity);
 
   app.use(
     session({
       secret: 'my-secret',
-      resave:false,
-      saveUninitialized:false,
+      resave: false,
+      saveUninitialized: false,
       cookie: { maxAge: 3600000 },
       store: new TypeormStore().connect(sessionrepository),
     }),

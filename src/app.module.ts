@@ -5,6 +5,10 @@ import { PassportModule } from '@nestjs/passport';
 import { DataSource } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Appdatasource } from './utils/appdatasource';
+import { SessionentityModule } from './sessionentity/sessionentity.module';
+import { ConversationController } from './conversation/conversation.controller';
+import { ConversationService } from './conversation/conversation.service';
+import { ConversationModule } from './conversation/conversation.module';
 import  entities  from './utils/typeorm';
 
 
@@ -15,7 +19,11 @@ import  entities  from './utils/typeorm';
     PassportModule.register({ session: true }),
     AuthModule,
     UserModule,
+    SessionentityModule,
+    ConversationModule,
   ],
+  controllers: [ConversationController],
+  providers: [ConversationService],
 
 })
 export class AppModule {

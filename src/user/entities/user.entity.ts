@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ChatParticipant } from '../../conversation/entities/ChatParticipant.entity';
 
 @Entity({ name: 'User' })
 export class User {
@@ -9,4 +16,8 @@ export class User {
   @Column({ type: 'varchar', length: 255, unique: true }) email: string;
 
   @Column({ type: 'varchar', length: 255 }) password: string;
+
+  @OneToOne(() => ChatParticipant)
+  @JoinColumn()
+  chatParticipant: ChatParticipant;
 }
