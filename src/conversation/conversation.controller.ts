@@ -13,6 +13,6 @@ export class ConversationController {
   @Post() createConversation(
     @Body() createConversationPayload: createConversationDto,
   ) {
-    this.conversationService.createConversation();
+    this.conversationService.createConversation(createConversationPayload);
   }
 }

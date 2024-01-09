@@ -1,6 +1,6 @@
 import { Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Conversation } from './Conversation.entity';
-import { JoinTable } from 'typeorm/browser';
+import { JoinTable } from 'typeorm';
 
 @Entity({ name: 'ChatParticipant' })
 export class ChatParticipant {

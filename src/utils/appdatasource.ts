@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import entities from "./typeorm";
+import entities from './typeorm';
 
 export const Appdatasource = new DataSource({
   type: 'postgres',
@@ -10,7 +10,5 @@ export const Appdatasource = new DataSource({
   database: 'chat',
   synchronize: true,
   logging: true,
-  entities: entities
-
-
+  entities: entities,
 });
