@@ -8,6 +8,7 @@ import { Appdatasource } from './utils/appdatasource';
 import { ConversationController } from './conversation/conversation.controller';
 import { ConversationService } from './conversation/conversation.service';
 import { ConversationModule } from './conversation/conversation.module';
+import { ParticipantModule } from './participant/participant.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ConversationModule } from './conversation/conversation.module';
     AuthModule,
     UserModule,
     ConversationModule,
+    ParticipantModule,
   ],
   controllers: [],
   providers: [],

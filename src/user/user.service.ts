@@ -41,16 +41,20 @@ export class UserService {
 
   findOne(id: number) {
     return this.userRepository.findOne({
-      select: ['email', 'password', 'name'],
+      select: ['email', 'password', 'name', 'id', 'chatParticipant'],
       where: { id: id },
     });
   }
 
   async findOneByEmail(email: string) {
     return await this.userRepository.findOne({
-      select: ['email', 'password', 'name'],
+      select: ['email', 'password', 'name', 'id', 'chatParticipant'],
       where: { email: email },
     });
+  }
+
+  async saveUser(user: User) {
+    return await this.userRepository.save(user);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

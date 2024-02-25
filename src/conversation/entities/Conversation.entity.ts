@@ -1,5 +1,5 @@
 import { Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { ChatParticipant } from './ChatParticipant.entity';
+import { ChatParticipant } from '../../participant/entities/ChatParticipant.entity';
 import { JoinTable } from 'typeorm';
 
 @Entity({ name: 'Conversation' })
@@ -10,6 +10,5 @@ export class Conversation {
     () => ChatParticipant,
     (ChatParticipant) => ChatParticipant.conversations,
   )
-  @JoinTable()
   chatParticipants: ChatParticipant[];
 }

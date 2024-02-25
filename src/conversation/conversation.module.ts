@@ -3,10 +3,10 @@ import { ConversationController } from './conversation.controller';
 import { ConversationService } from './conversation.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Conversation } from './entities/Conversation.entity';
-import { ChatParticipant } from './entities/ChatParticipant.entity';
+import { UserModule } from '../user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Conversation, ChatParticipant])],
+  imports: [UserModule, TypeOrmModule.forFeature([Conversation])],
   controllers: [ConversationController],
   providers: [ConversationService],
 })

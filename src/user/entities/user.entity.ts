@@ -5,7 +5,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ChatParticipant } from '../../conversation/entities/ChatParticipant.entity';
+import { ChatParticipant } from '../../participant/entities/ChatParticipant.entity';
 
 @Entity({ name: 'User' })
 export class User {
